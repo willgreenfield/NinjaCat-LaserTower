@@ -1,7 +1,7 @@
 /*
-   LaserCat - A lazer tower for the cat
+   laserTower.ino
    
-   LaserCat is a robot laser toy that randomly moves a servo tower on the X and Y axis 
+   Ninja Cat - a robot laser-tower toy that randomly moves a servo tower on the X and Y axis 
    and lights up an attached laser to train your cat to be a ninja.
    
    HOW IT WORKS:
@@ -17,15 +17,17 @@
 
 /* MODIFY THESE IF YOU WANT */
 
-// X-servo angle range [MIN_X, MAX_X]
-// Y-servo angle range [MIN_Y, MAX_Y]
- #define MIN_X 5
- #define MAX_X 80
- #define MIN_Y 5
- #define MAX_Y 35
- #define MIN_FREEZE 100
- #define MAX_FREEZE 1000
- #define MIN_MOVE 5
+
+
+ #define MIN_X 10        // X-servo angle range [MIN_X, MAX_X]
+ #define MAX_X 90      
+ #define MIN_Y 0         // Y-servo angle range [MIN_Y, MAX_Y]
+ #define MAX_Y 40
+ #define MIN_MOVE 10      // smallest distance allowed for a new location from the current position
+ #define MIN_FREEZE 100   // time to wait until next move
+ #define MAX_FREEZE 1500
+ #define MIN_MOVE_TIME 20 // time it takes the servos to move to new position 
+ #define MAX_MOVE_TIME 50
 
 /* CODE BELOW THIS LINE SHOULDNT NEED MODIFICATION */
 
@@ -53,18 +55,15 @@ void setup(){
   digitalWrite(13, HIGH);
 
   //Write starting position to servos
-  x_servo.write(x_pos);
-  y_servo.write(y_pos);
-
-  srand(time(NULL)); //sets seed of random generator to the system time
-  
+  X_Servo.write(x_pos);
+  Y_Servo.write(y_pos);  
 }
 
 void loop(){
   rand_freeze = random(MIN_FREEZE, MAX_FREEZE);
-  move_time = random(10,30);
+  move_time = random(MIN_MOVE_TIME,MAX_MOVE_TIME);
   x_new = random(MIN_X + MIN_MOVE, MAX_X - MIN_MOVE);
-  y_new = random(MIN_Y + MIN_MOVE, MAX_X - MIN_MOVE);
+  y_new = random(MIN_Y + MIN_MOVE, MAX_Y - MIN_MOVE);
 
 //checks that abs(x_new) is greater than MIN_MOVE. If not, add or subtract MIN_MOVE 
   if(abs(x_new - x_old) < MIN_MOVE){
@@ -100,9 +99,10 @@ void loop(){
   y_old = y_new;
 
   //delay beofore moving to next position
-  delay(random_freeze);
+  delay(rand_freeze);
   
 
+}
 
  
    
