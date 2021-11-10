@@ -17,18 +17,19 @@ Follow these instructions to get your cat training in no time!
 
 3. Wiring:
 
-  - Connect the laser to ground and pin 13
-  - 5v to x-servo and y-servo in series
-  - Ground (GND) to x-servo and y-servo in series
-  - x-servo to pin 6
-  - y-servo to pin 9
+  - Connect the laser diode (w/ resistor) to ground (GND) pin and pin 13 on the Arduino (Diagram below)
+  - Add a resistor between the laser and the Arduino. This limits current through the laser diode thus thus increasing the laser's lifespan. (resistor is already installed if you ordered the no-tools kit)
+  - Connect the Arduino's 5v pin to x and y servo power (red servo wire) in series. (Or use the pre-spliced power cable included in the no-tools kit) 
+  - Ground (GND) to x-servo and y-servo in series (black servo wire)
+  - x-servo to pin 6 (yellow)
+  - y-servo to pin 9 (yellow)_
 
 ![Wiring Diagram](pictures/NinjaCat-Wiring.png)
 
 4. The program:
   - Open laserTower.ino in the Arduino IDE or [use the online editor](https://create.arduino.cc/editor)
   - Upload the program to the board
-  - Modify these values based on the size of your ninja training grounds and fitness level of your cat
+  - Modify these values based on the size of your ninja training grounds and the fitness level of your cat. You can start with the default values and adjust them as needed.
   ```c
   #define MIN_X 10        // X-servo angle range [MIN_X, MAX_X]
   #define MAX_X 90      
