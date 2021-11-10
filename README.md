@@ -46,7 +46,7 @@ Follow these instructions to get your cat training in no time!
 ### Challenge question:
 Now that you've finished the build, take a moment to go through the code and try to figure out the purpose of each line.
 Can you guess the minimum and maximum values you can set for MIN_X, MAX_X, MIN_Y, MAX_Y? 
-Once you have a guess, put in your values and see if you were right! Dont worry about breaking anything, if the servo tower makes weird noises just unplug it, fix your values, and try again!
+Once you have a guess, put in your values and see if you were right! Dont worry about breaking anything, if the servo tower makes weird noises just unplug your Arduino, fix your values, and try again!
 
 ### Happy Ninja-Cat Training!
 ![Wiring Diagram](pictures/NinjaCat_1.jpg)
